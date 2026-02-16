@@ -36,7 +36,6 @@ class SavedScreenVM: ViewModel() {
     fun removeArticle(article: com.cristobal.gonews.api_services.models.Article) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                // Assuming you have a delete method in your repository
                 _articleRepository.deleteArticle(article)
                 Log.i("SavedScreenVM", "Article removed: ${article.title}")
             } catch (e: Exception) {
