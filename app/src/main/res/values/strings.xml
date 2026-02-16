@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GoNews</string>
+    <string name="home">Home</string>
+    <string name="saved">Saved</string>
+    <string name="headlines">Headlines</string>
+    <string name="article_saved">Article Saved</string>
+    <string name="info">
+        In this app, you can read the latest news from various sources. You can also save articles to read later sliding the article to the left. To delete an article, slide it to the right in the saved section. Enjoy staying informed with GoNews!
+    </string>
 </resources>

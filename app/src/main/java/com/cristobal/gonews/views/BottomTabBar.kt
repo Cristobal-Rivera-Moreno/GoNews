@@ -15,11 +15,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.cristobal.gonews.R
 
-sealed class BottomNavItem(val label: String, val icon: ImageVector) {
-    object Home : BottomNavItem("Home", Icons.Filled.Home)
-    object Saved : BottomNavItem("Saved", Icons.Filled.Bookmark)
+sealed class BottomNavItem(val label: Int, val icon: ImageVector) {
+    object Home : BottomNavItem(R.string.home, Icons.Filled.Home)
+    object Saved : BottomNavItem(R.string.saved, Icons.Filled.Bookmark)
 }
 
 @Composable
@@ -45,8 +47,8 @@ fun BottomTabBar(
                     ),
                 selected = selectedIndex == index,
                 onClick = { onTabSelected(index) },
-                icon = { Icon(item.icon, contentDescription = item.label) },
-                label = { Text(item.label) },
+                icon = { Icon(item.icon, contentDescription = stringResource( item.label)) },
+                label = { Text(stringResource(item.label)) },
                 colors =
                     androidx.compose.material3.NavigationBarItemDefaults.colors(
                         selectedIconColor = androidx.compose.material3.MaterialTheme.colorScheme.secondary,

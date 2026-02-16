@@ -17,6 +17,10 @@ class ArticleRepository(context: Context) {
                 if (it.id != null && it.name != null) {
                     sourceRepository.insertSource(it)
                 }
+                else if (it.id == null) {
+                    val sourceId = it.name ?: ""
+                    sourceRepository.insertSource(com.cristobal.gonews.api_services.models.Source(id = sourceId, name = it.name ?: ""))
+                }
             }
         }
         val sanitizedArticle = articles.map { article ->
@@ -34,5 +38,9 @@ class ArticleRepository(context: Context) {
 
     fun getRecentArticlesWithSource(limit: Int): Flow<List<ArticleWithSource>> {
         return articleDao.getRecentArticlesWithSource(limit)
+    }
+
+    suspend fun deleteArticle(article: Article) {
+        articleDao.deleteArticle(article)
     }
 }

@@ -1,6 +1,7 @@
 package com.cristobal.gonews.db
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -21,4 +22,7 @@ interface ArticleDao {
 
     @Query("SELECT * FROM articles ORDER BY publishedAt DESC LIMIT :limit")
     fun getRecentArticlesWithSource(limit: Int): Flow<List<ArticleWithSource>>
+
+    @Delete
+    suspend fun deleteArticle(article: Article)
 }

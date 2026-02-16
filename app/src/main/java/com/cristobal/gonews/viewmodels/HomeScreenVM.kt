@@ -15,6 +15,9 @@ class HomeScreenVM: ViewModel() {
     private val _newsList = MutableStateFlow<NewsResponse>(NewsResponse("", 0, emptyList()))
     val newsList: StateFlow<NewsResponse> get() = _newsList
 
+    private val _infoDialogVisible = MutableStateFlow(false)
+    val infoDialogVisible: StateFlow<Boolean> get() = _infoDialogVisible
+
     init {
         requestNews()
     }
@@ -44,5 +47,9 @@ class HomeScreenVM: ViewModel() {
                 Log.e(obTag, "Error saving article: ${e.message}")
             }
         }
+    }
+
+    fun setInfoDialogVisible(visible: Boolean) {
+        _infoDialogVisible.value = visible
     }
 }
